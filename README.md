@@ -68,5 +68,3 @@ Este projeto foi desenvolvido para fins de estudo, com foco em:
 ---
 
 ## Projetos relacionados
-
-- Versão web do Mini Sistema Agro em Python (CLI)
