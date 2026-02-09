@@ -26,9 +26,7 @@ Projeto com fins educacionais, focado em lógica de programação e manipulaçã
 
 ---
 
-## Arquivos do projeto
-
-# 📁 Estrutura do Projeto
+##  Estrutura do Projeto
 
 ```bash
 mini-sistema-agro-web/
