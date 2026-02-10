@@ -75,9 +75,11 @@ function analisar() {
       radioSelecionado = true;
 
       // Calcula diferença de dias com base na plantação selecionada
-      let diaPlantacao = new Date(p[2].split("/").reverse().join("-"));
+      const hoje = new Date();
+      hoje.setHours(0, 0, 0, 0);
       let diaColheita = new Date(p[3].split("/").reverse().join("-"));
-      let diffDias = (diaColheita - diaPlantacao) / (1000 * 60* 60 * 24);
+      diaColheita.setHours(0, 0, 0, 0)
+      let diffDias = (diaColheita - hoje) / (1000 * 60* 60 * 24);
 
       if (diffDias >= 0) {
         calculotexto = "<p>Faltam " + diffDias + " dias para a colheita!</p>"

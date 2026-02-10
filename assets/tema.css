@@ -108,6 +108,11 @@ footer {
     text-align: center;
 }
 
+.container a {
+    display: block;
+    margin-top: 12px;
+}
+
 @media (max-width: 600px) {
 
     body {
@@ -138,6 +143,15 @@ footer {
         font-size: 1em;
         margin: 6px auto 0 auto;
     }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+        width: auto;
+        max-width: none;
+        display: inline-block;
+        margin: 0 6px 0 0;
+    }
+
 
     a {
         display: block;
