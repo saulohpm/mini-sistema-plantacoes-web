@@ -1,7 +1,6 @@
 // Cria uma variável composta vazia ou puxa dados salvos
 let plantacoes = JSON.parse(localStorage.getItem("plantacoes")) || [];
 
-
 function cadastrar() {
 
   let nome = window.document.getElementById('nome');
@@ -23,11 +22,17 @@ function cadastrar() {
 
   };
 
+  const diaPlantacao = new Date(dia_plantacao.value.split("/").reverse().join("-"));
+  const diaColheita = new Date(dia_colheita.value.split("/").reverse().join("-"));
+
   if (logico !== false) {
     alert("Preencha todos os campos!");
 
   } else if (!formatoData.test(dia_plantacao.value) || !formatoData.test(dia_colheita.value)) {
-    alert("Data inválida! Use o formato dd/mm/aaaa");
+    alert("Data Inválida! Use o formato dd/mm/aaaa");
+
+  } else if (diaPlantacao >= diaColheita) {
+    alert("Data Inválida! Dia de Plantação posterior ao de Colheita");
 
   } else {
       plantacoes.push(plantacao);
@@ -40,16 +45,21 @@ function cadastrar() {
 
 function visualizar() {
   let res = document.getElementById("resultado");
-  res.innerHTML = "<p>Plantações Cadastradas:</p>";
 
-  for (let p of plantacoes) {
-    res.innerHTML +=
-    `<input type="radio" id="${p[0]}" name="plantacoes">
-    <label for="${p[0]}">${p[0]}</label><br>`
-  };
+  if (plantacoes.length === 0) {
+    res.innerHTML = "<h2>NÃO HÁ CADASTRO DE PLANTAÇÕES</h2>"
 
-  res.innerHTML += `<button type="button" id="edicao" onclick="analisar()">Visualizar</button>`
+  } else {
+    res.innerHTML = "<p>Plantações Cadastradas:</p>";
 
+    for (let p of plantacoes) {
+      res.innerHTML +=
+      `<input type="radio" id="${p[0]}" name="plantacoes">
+      <label for="${p[0]}">${p[0]}</label><br>`
+    };
+
+    res.innerHTML += `<button type="button" id="edicao" onclick="analisar()">Visualizar</button>`
+  }
 }
 
 
@@ -88,19 +98,27 @@ function analisar() {
   if (!radioSelecionado) {
     alert("Selecione uma das opções!");
   }
-};
+}
 
 
 function editar() {
   let res = document.getElementById("resultado");
-  res.innerHTML = "<p>Escola uma plantação para editar:</p>";
 
-  for (let p of plantacoes) {
-    res.innerHTML +=
-    `<input type="radio" id="${p[0]}", name="plantacoes">
-    <label for="${p[0]}">${p[0]}</label><br>`
-  };
-};
+  if (plantacoes.length === 0) {
+    res.innerHTML = "<h2>NÃO HÁ CADASTRO DE PLANTAÇÕES</h2>"
+  } else {
+    res.innerHTML = "<p>Escola uma plantação para editar:</p>";
+
+    for (let p of plantacoes) {
+      res.innerHTML +=
+      `<input type="radio" id="${p[0]}", name="plantacoes">
+      <label for="${p[0]}">${p[0]}</label><br>`
+    }
+
+    res.innerHTML += 
+    `<button type="button" id="edicao" onclick="edicao()">Editar</button>`;
+  }
+}
 
 
 function edicao() {
@@ -150,7 +168,58 @@ function confirmarEdicao(index) {
 
   alert("Plantação editada com sucesso!");
   document.getElementById("resultado2").innerHTML = "";
-  visualizar(); // atualiza a lista na tela
+  window.location.href = "../index.html"
+}
+
+
+function apagar() {
+  let res = document.getElementById("resultado");
+
+  if (plantacoes.length === 0) {
+    res.innerHTML = "<h2>NÃO HÁ CADASTRO DE PLANTAÇÕES</h2>"
+  } else {
+    res.innerHTML = "<p>Escola uma plantação para apagar:</p>";
+
+    for (let p of plantacoes) {
+      res.innerHTML +=
+      `<input type="radio" id="${p[0]}", name="plantacoes">
+      <label for="${p[0]}">${p[0]}</label><br>`
+    }
+
+    res.innerHTML +=
+    `<button type="button" id="edicao" onclick="confirmarApagar()">Apagar</button>`;
+  }
+}
+
+
+function confirmarApagar() {
+  let radioSelecionado = false;
+
+  for (let i = 0; i < plantacoes.length; i++) {
+    let p = plantacoes[i];
+    const radio = document.getElementById(p[0]);
+
+    if (radio && radio.checked) {
+      radioSelecionado = true;
+
+      // guarda antes de remover
+      let letraRemovida = plantacoes[i];
+
+      // remove
+      plantacoes = plantacoes.filter(letra => letra !== letraRemovida);
+
+      // salva
+      localStorage.setItem("plantacoes", JSON.stringify(plantacoes));
+
+      alert(`${letraRemovida[0]} deletada com sucesso!`);
+      window.location.href = "../index.html";
+      break;
+    }
+  }
+
+  if (!radioSelecionado) {
+    alert("Selecione uma das opções!");
+  }
 }
 
 
@@ -167,7 +236,4 @@ function limpar() {
     // Usuário clicou Cancelar
     alert("Ação cancelada.");
   }
-
-
-
-};
+}

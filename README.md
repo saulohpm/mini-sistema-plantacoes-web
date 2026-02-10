@@ -1,9 +1,9 @@
-# 🌱 Mini Sistema Agro (Web)
+# 🌱 Mini Sistema de Manuseio de Plantações (Web)
 
 Mini sistema web para cadastro, edição e visualização de plantações, desenvolvido com HTML, CSS e JavaScript.  
 Os dados são armazenados localmente no navegador utilizando localStorage.
 
-Projeto com fins educacionais, focado em lógica de programação e manipulação do DOM, sem uso de frameworks ou backend.
+Projeto com fins educacionais, focado na prática de JavaScript. Isto é, lógica de programação e manipulação do DOM, sem uso de frameworks ou backend.
 
 ---
 
