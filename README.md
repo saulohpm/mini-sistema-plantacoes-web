@@ -35,7 +35,9 @@ mini-sistema-agro-web/
 ├── pages/
 │   ├── cadastrar.html
 │   ├── editar.html
-│   └── visualizar.html
+│   ├── visualizar.html
+│   ├── relatorios.html
+│   └── apagar.html
 └── assets/
     ├── script.js
     ├── tema.css

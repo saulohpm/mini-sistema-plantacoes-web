@@ -211,6 +211,68 @@ function resumomensal() {
 
 function statuscolheita() {
   let res = document.getElementById("resultado");
+
+  let concluidas = []
+  let emandamento = []
+  let agendadas = []
+
+  let hoje = new Date()
+
+  res.innerHTML = `<hr><h2>Resumo de Colheita Mensal</h2><hr>`
+
+  for (let p of plantacoes) {
+    let dia_plantacao = new Date(p[2].split("/").reverse().join("-"));
+    let dia_colheita = new Date(p[3].split("/").reverse().join("-"));
+
+    if (dia_colheita <= hoje) {
+      concluidas.push(p)
+    } else if (dia_plantacao <= hoje && hoje < dia_colheita) {
+      emandamento.push(p)
+    } else {
+      agendadas.push(p)
+    }
+  }
+
+  res.innerHTML += `<p>🟢 Concluidas (${concluidas.length})</p>`
+  for (let p of concluidas) {
+    res.innerHTML += `<p>- ${p[0]} | Colheita: ${p[1]}</p>`
+  }
+
+  res.innerHTML += `<p>🟡 Em Andamento (${concluidas.length})</p>`
+  for (let p of concluidas) {
+    res.innerHTML += `<p>- ${p[0]} | Colheita: ${p[1]}</p>`
+  }
+
+  res.innerHTML += `<p>🔵 Plantios Agendados (${concluidas.length})</p>`
+  for (let p of concluidas) {
+    res.innerHTML += `<p>- ${p[0]} | Colheita: ${p[1]}</p>`
+  }
+}
+
+
+function analisecolheitas() {
+  let res = document.getElementById("resultado");
+
+  res.innerHTML = `<hr><h2>Análise de Colheitas</h2><hr>
+                   <p>| Próximas Colheidas (Em 7 Dias) |</p>`
+
+  let hoje = new Date()
+  let contador = 0
+
+  for (let p of plantacoes) {
+    let dia_colheita = new Date(p[3].split("/").reverse().join("-"));
+    let diferenca = (dia_colheita - hoje) / (1000 * 60 * 60 * 24);
+
+    if (0 <= diferenca && diferenca <= 7) {
+      res.innerHTML += `<p>- ${p[0]} | Colheita em ${diferenca} dias</p>`
+      contador += 1
+    }
+  }
+
+  if (contador === 0) {
+    res.innerHTML += `<p>NÃO HÁ COLHEITAS PELOS PRÓXIMOS 7 DIAS!</p>`
+  }
+
 }
 
 
