@@ -20,13 +20,11 @@ function cadastrar() {
   const plantacao = [nome, semente, diaPlantacao, diaColheita];
   const formatoData = /^\d{2}\/\d{2}\/\d{4}$/;
 
-  // Verifica campos vazios
   if (plantacao.includes("")) {
     alert("Preencha todos os campos!");
     return;
   }
 
-  // Valida formato de data
   if (!formatoData.test(diaPlantacao) || !formatoData.test(diaColheita)) {
     alert("Data inválida! Use o formato dd/mm/aaaa");
     return;
@@ -157,13 +155,35 @@ function confirmarEdicao(index) {
   const novo_dia_plantacao = document.getElementById("novo_dia_plantacao").value;
   const novo_dia_colheita = document.getElementById("novo_dia_colheita").value;
 
+  const formatoData = /^\d{2}\/\d{2}\/\d{4}$/;
+
+  if (!novo_nome || !nova_semente || !novo_dia_plantacao || !novo_dia_colheita) {
+    alert("Preencha todos os campos!");
+    return;
+  }
+
+  if (!formatoData.test(novo_dia_plantacao) || !formatoData.test(novo_dia_colheita)) {
+    alert("Data inválida! Use o formato dd/mm/aaaa");
+    return;
+  }
+
+  const dataPlantacao = new Date(novo_dia_plantacao.split("/").reverse().join("-"));
+  const dataColheita = new Date(novo_dia_colheita.split("/").reverse().join("-"));
+
+  if (dataPlantacao >= dataColheita) {
+    alert("Data inválida! Dia de Plantação posterior ao de Colheita");
+    return;
+  }
+
   plantacoes[index] = [novo_nome, nova_semente, novo_dia_plantacao, novo_dia_colheita];
+
   localStorage.setItem("plantacoes", JSON.stringify(plantacoes));
 
   alert("Plantação editada com sucesso!");
   document.getElementById("resultado2").innerHTML = "";
   window.location.href = "../index.html";
 }
+
 
 // ============================
 // Funções de Resumo e Status
