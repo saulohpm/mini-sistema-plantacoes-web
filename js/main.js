@@ -36,7 +36,7 @@ function cadastrar() {
     return;
   }
 
-  const plantacao = [nome, semente, diaPlantacao, diaColheita];
+  const plantacao = {nome: nome, semente: semente, diaPlantacao: diaPlantacao, diaColheita: diaColheita};
 
   plantacoes.push(plantacao);
   salvarDados("plantacoes", plantacoes);
@@ -61,8 +61,8 @@ function visualizar() {
 
   plantacoes.forEach((p, i) => {
     res.innerHTML += `
-      <input type="radio" id="${p[0]}" name="plantacoes" value="${i}">
-      <label for="${p[0]}">${p[0]}</label><br>`;
+      <input type="radio" id="plantacao_${i}" name="plantacoes" value="${i}">
+      <label for="plantacao_${i}">${p.nome}</label><br>`;
   });
 
   res.innerHTML += `<button type="button" onclick="analisar()">Visualizar</button>`;
@@ -82,7 +82,7 @@ function analisar() {
   const p = plantacoes[index];
 
   const hoje = new Date();
-  const colheita = converterData(p[3]);
+  const colheita = converterData(p.diaColheita);
   const diffDias = diferencaEmDias(hoje, colheita);
 
   const textoDias = diffDias >= 0
@@ -90,10 +90,10 @@ function analisar() {
     : `<p>Se passaram ${-diffDias} dias da colheita!</p>`;
 
   res.innerHTML = `
-    <h2>Plantação: ${p[0]}</h2>
-    <p>Semente: ${p[1]}</p>
-    <p>Data de Plantio: ${p[2]}</p>
-    <p>Data de Colheita: ${p[3]}</p>
+    <h2>Plantação: ${p.nome}</h2>
+    <p>Semente: ${p.semente}</p>
+    <p>Data de Plantio: ${p.diaPlantacao}</p>
+    <p>Data de Colheita: ${p.diaColheita}</p>
     ${textoDias}`;
 }
 
@@ -113,8 +113,8 @@ function editar() {
 
   plantacoes.forEach((p, i) => {
     res.innerHTML += `
-      <input type="radio" id="${p[0]}" name="plantacoes" value="${i}">
-      <label for="${p[0]}">${p[0]}</label><br>`;
+      <input type="radio" id="plantacao_${i}" name="plantacoes" value="${i}">
+      <label for="plantacao_${i}">${p.nome}</label><br>`;
   });
 
   res.innerHTML += `<button onclick="edicao()">Editar</button>`;
@@ -136,11 +136,11 @@ function edicao() {
 
   res.innerHTML = "";
   res2.innerHTML = `
-    <h2>Editando ${p[0]}</h2>
-    <p>Nome: <input type="text" id="novo_nome" value="${p[0]}"></p>
-    <p>Semente: <input type="text" id="nova_semente" value="${p[1]}"></p>
-    <p>Dia Plantio: <input type="text" id="novo_dia_plantacao" value="${p[2]}"></p>
-    <p>Dia Colheita: <input type="text" id="novo_dia_colheita" value="${p[3]}"></p>
+    <h2>Editando ${p.nome}</h2>
+    <p>Nome: <input type="text" id="novo_nome" value="${p.nome}"></p>
+    <p>Semente: <input type="text" id="nova_semente" value="${p.semente}"></p>
+    <p>Dia Plantio: <input type="text" id="novo_dia_plantacao" value="${p.diaPlantacao}"></p>
+    <p>Dia Colheita: <input type="text" id="novo_dia_colheita" value="${p.diaColheita}"></p>
     <button onclick="confirmarEdicao(${index})">Confirmar Edição</button>`;
 }
 
@@ -165,11 +165,11 @@ function confirmarEdicao(index) {
   const dataColheita = converterData(novo_dia_colheita);
 
   if (!validarOrdemDatas(dataPlantacao, dataColheita)) {
-    alert("Data inválida!");
+    alert("Data inválida! Dia de Plantação posterior ao de Colheita");
     return;
   }
 
-  plantacoes[index] = [novo_nome, nova_semente, novo_dia_plantacao, novo_dia_colheita];
+  plantacoes[index] = {nome: novo_nome, semente: nova_semente, diaPlantacao: novo_dia_plantacao, diaColheita: novo_dia_colheita};
 
   salvarDados("plantacoes", plantacoes);
 
@@ -192,18 +192,18 @@ function resumoMensal() {
 
   let temColheita = 0;
 
-  plantacoes.forEach(p => {
-    const diaColheita = converterData(p[3]);
-    const mesColheita = meses[diaColheita.getMonth()];
+plantacoes.forEach(p => {
+  const diaColheita = converterData(p.diaColheita);
+  const mesColheita = meses[diaColheita.getMonth()];
 
-    if (mesColheita === mesAtual) {
-      res.innerHTML += `
-        <br><p>- ${p[0]}</p>
-        <p>Semente: ${p[1]}</p>
-        <p>Colheita: ${p[3]}</p>`;
-      temColheita++;
-    }
-  });
+  if (mesColheita === mesAtual) {
+    res.innerHTML += `
+      <br><p>- ${p.nome}</p>
+      <p>Semente: ${p.semente}</p>
+      <p>Colheita: ${p.diaColheita}</p>`;
+    temColheita++;
+  }
+});
 
   if (temColheita === 0)
     res.innerHTML += `<h4>NÃO HÁ COLHEITAS PARA ESTE MÊS!</h4>`;
@@ -219,8 +219,8 @@ function statusColheita() {
   const agendadas = [];
 
   plantacoes.forEach(p => {
-    const diaPlantacao = converterData(p[2]);
-    const diaColheita = converterData(p[3]);
+    const diaPlantacao = converterData(p.diaPlantacao);
+    const diaColheita = converterData(p.diaColheita);
 
     if (diaColheita <= hoje) concluidas.push(p);
     else if (diaPlantacao <= hoje && hoje < diaColheita) emAndamento.push(p);
@@ -230,13 +230,13 @@ function statusColheita() {
   res.innerHTML = `
     <hr><h2>Status das Colheitas</h2><hr>
     <p>🟢 Concluídas (${concluidas.length})</p>
-    ${concluidas.map(p => `<p>- ${p[0]} | Colheita: ${p[3]}</p>`).join("")}
+    ${concluidas.map(p => `<p>- ${p.nome} | Colheita: ${p.diaColheita}</p>`).join("")}
 
     <p>🟡 Em Andamento (${emAndamento.length})</p>
-    ${emAndamento.map(p => `<p>- ${p[0]} | Colheita: ${p[3]}</p>`).join("")}
+    ${emAndamento.map(p => `<p>- ${p.nome} | Colheita: ${p.diaColheita}</p>`).join("")}
 
     <p>🔵 Plantios Agendados (${agendadas.length})</p>
-    ${agendadas.map(p => `<p>- ${p[0]} | Colheita: ${p[3]}</p>`).join("")}`;
+    ${agendadas.map(p => `<p>- ${p.nome} | Colheita: ${p.diaColheita}</p>`).join("")}`;
 }
 
 
@@ -250,11 +250,11 @@ function analiseColheitas() {
     <p>| Próximas Colheitas (em 7 dias) |</p>`;
 
   plantacoes.forEach(p => {
-    const diaColheita = converterData(p[3]);
-    const diferenca = Math.round((diaColheita - hoje) / (1000 * 60 * 60 * 24));
+    const diaColheita = converterData(p.diaColheita);
+    const diferenca = Math.floor((diaColheita - hoje) / (1000 * 60 * 60 * 24));
 
     if (diferenca >= 0 && diferenca <= 7) {
-      res.innerHTML += `<p>- ${p[0]} | Colheita em ${diferenca} dias</p>`;
+      res.innerHTML += `<p>- ${p.nome} | Colheita em ${diferenca} dias</p>`;
       contador++;
     }
   });
@@ -279,8 +279,8 @@ function apagar() {
 
   plantacoes.forEach((p, i) => {
     res.innerHTML += `
-      <input type="radio" id="${p[0]}" name="plantacoes" value="${i}">
-      <label for="${p[0]}">${p[0]}</label><br>`;
+      <input type="radio" id="plantacao_${i}" name="plantacoes" value="${i}">
+      <label for="plantacao_${i}">${p.nome}</label><br>`;
   });
 
   res.innerHTML += `<button onclick="confirmarApagar()">Apagar</button>`;
@@ -300,7 +300,7 @@ function confirmarApagar() {
   plantacoes.splice(index, 1);
   salvarDados("plantacoes", plantacoes);
 
-  alert(`${p[0]} deletada com sucesso!`);
+  alert(`${p.nome} deletada com sucesso!`);
   window.location.href = "../index.html";
 }
 

@@ -5,7 +5,6 @@ Os dados são armazenados localmente no navegador utilizando localStorage.
 
 Projeto com fins educacionais, focado na prática de JavaScript. Isto é, lógica de programação e manipulação do DOM, sem uso de frameworks ou backend.
 
----
 
 ## Funcionalidades
 
@@ -15,7 +14,6 @@ Projeto com fins educacionais, focado na prática de JavaScript. Isto é, lógic
 - Limpeza dos dados armazenados
 - Persistência local com localStorage
 
----
 
 ## Tecnologias utilizadas
 
@@ -24,7 +22,6 @@ Projeto com fins educacionais, focado na prática de JavaScript. Isto é, lógic
 - JavaScript (Vanilla)
 - localStorage
 
----
 
 ##  Estrutura do Projeto
 
@@ -51,21 +48,18 @@ mini-sistema-plantacoes-web/
     └── favicon.png
 ```
 
----
-
 ## Como executar
 
 1. Clone o repositório: \
-https://github.com/saulohpm/mini-sistema-agro-web.git
+https://github.com/saulohpm/mini-sistema-plantacoes-web.git
 
 2. Abra o arquivo menu.html em qualquer navegador moderno.
 
 O sistema funciona localmente e não requer servidor.
 
 Acesse também pela página: \
-https://saulohpm.github.io/mini-sistema-agro-web/index.html
+https://saulohpm.github.io/mini-sistema-plantacoes-web/index.html
 
----
 
 ## Observações
 
@@ -74,7 +68,6 @@ https://saulohpm.github.io/mini-sistema-agro-web/index.html
 - O projeto não utiliza backend nem banco de dados externo.
 - A arquitetura JavaScript é procedural.
 
----
 
 ## Objetivo do projeto
 
