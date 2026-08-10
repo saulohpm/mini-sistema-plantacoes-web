@@ -1,75 +1,98 @@
 # 🌱 Mini Sistema de Manuseio de Plantações (Web)
 
-Mini sistema web para cadastro, edição e visualização de plantações, desenvolvido com HTML, CSS e JavaScript.  
-Os dados são armazenados localmente no navegador utilizando localStorage.
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6.svg?style=flat&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
+![Versão](https://img.shields.io/badge/Versão-3.5-orange)
+![Status](https://img.shields.io/badge/Status-Concluído-brightgreen)
 
-Projeto com fins educacionais, focado na prática de JavaScript. Isto é, lógica de programação e manipulação do DOM, sem uso de frameworks ou backend.
+🔗 **[Demonstração](https://saulohpm.github.io/mini-sistema-plantacoes-web/index.html)**
 
+Mini sistema web para cadastro, edição e visualização de plantações, desenvolvido com HTML, CSS e JavaScript puro (sem frameworks ou backend). Os dados são armazenados localmente no navegador via `localStorage`.
 
-## Funcionalidades
+Este é o par web do [Mini Sistema de Manuseio de Plantações (CLI)](#), mesmo domínio de negócio reimplementado como aplicação web — uma forma de praticar lógica de programação e manipulação do DOM sobre um problema já conhecido.
+
+---
+
+## 📷 Print de Demonstração
+
+![Demonstração](assets/print.png)
+
+---
+
+## ✨ Funcionalidades
 
 - Cadastro de plantações
 - Visualização das plantações cadastradas
 - Edição de dados de uma plantação
-- Limpeza dos dados armazenados
-- Persistência local com localStorage
+- Geração de relatórios
+- Remoção de plantações individuais
+- Limpeza completa dos dados armazenados
+- Persistência local com `localStorage`
 
+---
 
-## Tecnologias utilizadas
+## 🛠️ Tecnologias
 
 - HTML5
 - CSS3
 - JavaScript (Vanilla)
-- localStorage
+- `localStorage`
 
+---
 
-##  Estrutura do Projeto
-
+## 📂 Estrutura do Projeto
 ```bash
 mini-sistema-plantacoes-web/
 ├── index.html
 ├── README.md
 │
 ├── pages/
-│   ├── cadastrar.html
-│   ├── editar.html
-│   ├── visualizar.html
-│   ├── relatorios.html
-│   └── apagar.html
+│ ├── cadastrar.html
+│ ├── editar.html
+│ ├── visualizar.html
+│ ├── relatorios.html
+│ └── apagar.html
 │
 ├── js/
-│   ├── main.js
-│   └── utils.js
+│ ├── main.js
+│ └── utils.js
 │
 ├── css/
-│   └── style.css
+│ └── style.css
 │
 └── assets/
-    └── favicon.png
+└── favicon.png
+```
+---
+
+## ▶️ Como Executar
+
+**Opção 1 — Demo online:**
+Acesse diretamente: https://saulohpm.github.io/mini-sistema-plantacoes-web/index.html
+
+**Opção 2 — Localmente:**
+
+```bash
+git clone https://github.com/saulohpm/mini-sistema-plantacoes-web.git
+cd mini-sistema-plantacoes-web
 ```
 
-## Como executar
+Abra o arquivo `index.html` em qualquer navegador moderno. O sistema funciona localmente e não requer servidor.
 
-1. Clone o repositório: \
-https://github.com/saulohpm/mini-sistema-plantacoes-web.git
+---
 
-2. Abra o arquivo menu.html em qualquer navegador moderno.
+## 📝 Observações
 
-O sistema funciona localmente e não requer servidor.
+- Os dados ficam salvos apenas no navegador do usuário
+- A limpeza do cache do navegador remove todos os dados
+- O projeto não utiliza backend nem banco de dados externo
+- A arquitetura JavaScript é procedural
+- Projeto desenvolvido para fins de estudo
 
-Acesse também pela página: \
-https://saulohpm.github.io/mini-sistema-plantacoes-web/index.html
+---
 
-
-## Observações
-
-- Os dados ficam salvos apenas no navegador do usuário.
-- A limpeza do cache do navegador remove todos os dados.
-- O projeto não utiliza backend nem banco de dados externo.
-- A arquitetura JavaScript é procedural.
-
-
-## Objetivo do projeto
+## 🎯 Objetivo do Projeto
 
 Este projeto foi desenvolvido para fins de estudo, com foco em:
 
