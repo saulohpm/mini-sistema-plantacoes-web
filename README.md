@@ -10,7 +10,7 @@
 
 Mini sistema web para cadastro, edição e visualização de plantações, desenvolvido com HTML, CSS e JavaScript puro (sem frameworks ou backend). Os dados são armazenados localmente no navegador via `localStorage`.
 
-Este é o par web do [Mini Sistema de Manuseio de Plantações (CLI)](#), mesmo domínio de negócio reimplementado como aplicação web — uma forma de praticar lógica de programação e manipulação do DOM sobre um problema já conhecido.
+Este é o par web do [Mini Sistema de Manuseio de Plantações (CLI)](https://github.com/saulohpm/mini-sistema-plantacoes-python), mesmo domínio de negócio reimplementado como aplicação web, uma forma de praticar lógica de programação e manipulação do DOM sobre um problema já conhecido.
 
 ---
 
