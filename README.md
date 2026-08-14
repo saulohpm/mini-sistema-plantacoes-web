@@ -66,9 +66,10 @@ mini-sistema-plantacoes-web/
 ```
 ---
 
-## ▶️ Como Executar
+## ▶️ Execução
 
-**Opção 1 — Demonstração online:** https://saulohpm.github.io/mini-sistema-plantacoes-web/index.html
+**Opção 1 — Demonstração online:**  
+https://saulohpm.github.io/mini-sistema-plantacoes-web/index.html
 
 **Opção 2 — Localmente:**
 
