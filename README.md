@@ -6,11 +6,18 @@
 ![Versão](https://img.shields.io/badge/Versão-3.5-orange)
 ![Status](https://img.shields.io/badge/Status-Concluído-brightgreen)
 
-🔗 **[Demonstração](https://saulohpm.github.io/mini-sistema-plantacoes-web/index.html)**
+Mini sistema web para cadastro, edição e visualização de plantações, desenvolvido com HTML, CSS e JavaScript puro (sem frameworks ou backend). Os dados são armazenados localmente no navegador via localStorage.
 
-Mini sistema web para cadastro, edição e visualização de plantações, desenvolvido com HTML, CSS e JavaScript puro (sem frameworks ou backend). Os dados são armazenados localmente no navegador via `localStorage`.
+Este é o par web do [Mini Sistema de Manuseio de Plantações (CLI)](https://github.com/saulohpm/mini-sistema-plantacoes-python) — o mesmo domínio de negócio reimplementado como aplicação web, praticando manipulação de DOM e formulários multi-página sobre um problema já modelado na versão de terminal.
 
-Este é o par web do [Mini Sistema de Manuseio de Plantações (CLI)](https://github.com/saulohpm/mini-sistema-plantacoes-python), mesmo domínio de negócio reimplementado como aplicação web, uma forma de praticar lógica de programação e manipulação do DOM sobre um problema já conhecido.
+## 🎯 Objetivo do Projeto
+
+Praticar, especificamente:
+
+- Manipulação de DOM e formulários em múltiplas páginas HTML
+- Sincronização de estado entre páginas via localStorage
+- Geração de relatórios a partir de dados armazenados localmente
+- Estruturação de um pequeno sistema web sem frameworks, do zero
 
 ---
 
@@ -89,13 +96,3 @@ Abra o arquivo `index.html` em qualquer navegador moderno. O sistema funciona lo
 - O projeto não utiliza backend nem banco de dados externo
 - A arquitetura JavaScript é procedural
 - Projeto desenvolvido para fins de estudo
-
----
-
-## 🎯 Objetivo do Projeto
-
-Este projeto foi desenvolvido para fins de estudo, com foco em:
-
-- Lógica de programação em JavaScript
-- Manipulação do DOM
-- Estruturação básica de um sistema web usando HTML e CSS
