@@ -14,8 +14,6 @@ Mini sistema web para cadastro, edição e visualização de plantações, desen
 
 ## 🎯 Objetivo do Projeto
 
-Praticar, especificamente:
-
 - Manipulação de DOM e formulários em múltiplas páginas HTML
 - Sincronização de estado entre páginas via localStorage
 - Geração de relatórios a partir de dados armazenados localmente
@@ -37,10 +35,12 @@ Praticar, especificamente:
 
 ## 🛠️ Tecnologias
 
-- HTML5
-- CSS3
-- JavaScript (Vanilla)
-- `localStorage`
+| **Tecnologia**     | **Uso**                                      |
+| ------------------ | -------------------------------------------- |
+| `HTML5`            | Estruturação das páginas e formulários      |
+| `CSS3`             | Estilização e organização visual da interface |
+| `JavaScript`       | Lógica, manipulação do DOM e funcionalidades |
+| `localStorage`     | Armazenamento local dos dados no navegador   |
 
 ---
 
@@ -80,11 +80,8 @@ https://saulohpm.github.io/mini-sistema-plantacoes-web/index.html
 ```bash
 git clone https://github.com/saulohpm/mini-sistema-plantacoes-web.git
 ```
-```bash
-cd nome-do-repositorio
-```
 
-Abra o arquivo `index.html` em qualquer navegador moderno. O sistema funciona localmente e não requer servidor.
+Depois abra a pasta do repositorio e em seguida abra o arquivo `index.html` em qualquer navegador moderno. O sistema funciona localmente e não requer servidor.
 
 ---
 
