@@ -3,12 +3,12 @@
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6.svg?style=flat&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
-![Versão](https://img.shields.io/badge/Versão-3.5-orange)
-![Status](https://img.shields.io/badge/Status-Concluído-brightgreen)
+![Versão](https://img.shields.io/badge/Versão_3.5-orange)
+![Status](https://img.shields.io/badge/Finalizado-brightgreen)
 
 Mini sistema web para cadastro, edição e visualização de plantações, desenvolvido com HTML, CSS e JavaScript puro (sem frameworks ou backend). Os dados são armazenados localmente no navegador via localStorage.
 
-Este é o par web do [Mini Sistema de Manuseio de Plantações (CLI)](https://github.com/saulohpm/mini-sistema-plantacoes-python), o mesmo domínio de negócio reimplementado como aplicação web, praticando manipulação de DOM e formulários multi-página sobre um problema já modelado na versão de terminal.
+> Este é o par web do [Mini Sistema de Manuseio de Plantações (CLI)](https://github.com/saulohpm/mini-sistema-plantacoes-python), o mesmo domínio de negócio reimplementado como aplicação web, praticando manipulação de DOM e formulários multi-página sobre um problema já modelado na versão de terminal.
 
 ![Demonstração](assets/print.png)
 
@@ -47,29 +47,30 @@ Praticar, especificamente:
 ## 📂 Estrutura do Projeto
 ```bash
 mini-sistema-plantacoes-web/
+│
 ├── index.html
 ├── README.md
 │
 ├── pages/
-│ ├── cadastrar.html
-│ ├── editar.html
-│ ├── visualizar.html
-│ ├── relatorios.html
-│ └── apagar.html
+│   ├── cadastrar.html
+│   ├── editar.html
+│   ├── visualizar.html
+│   ├── relatorios.html
+│   └── apagar.html
 │
 ├── js/
-│ ├── main.js
-│ └── utils.js
+│   ├── main.js
+│   └── utils.js
 │
 ├── css/
-│ └── style.css
+│   └── style.css
 │
 └── assets/
-└── favicon.png
+    └── favicon.png
 ```
 ---
 
-## ▶️ Execução
+## ▶️ Como Executar
 
 **Opção 1 — Demonstração online:**  
 https://saulohpm.github.io/mini-sistema-plantacoes-web/index.html
@@ -78,7 +79,9 @@ https://saulohpm.github.io/mini-sistema-plantacoes-web/index.html
 
 ```bash
 git clone https://github.com/saulohpm/mini-sistema-plantacoes-web.git
-cd mini-sistema-plantacoes-web
+```
+```bash
+cd nome-do-repositorio
 ```
 
 Abra o arquivo `index.html` em qualquer navegador moderno. O sistema funciona localmente e não requer servidor.
