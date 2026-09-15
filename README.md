@@ -12,6 +12,8 @@ Mini sistema web para cadastro, edição e visualização de plantações, desen
 
 ![Demonstração](assets/print.png)
 
+---
+
 ## 🎯 Objetivo do Projeto
 
 - Manipulação de DOM e formulários em múltiplas páginas HTML
